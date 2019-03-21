@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: grpc-gateway
+  name: grpc-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grpc-gateway
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grpc-gateway
+    spec:
+      containers:
+      - image: yuuyamad/go-grpc-sample-gateway:latest
+        name: go-grpc-sample-gateway
+        envFrom:
+        - configMapRef:
+            name: grpc-gateway
+        resources: {}
+status: {}
